@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.conf import settings
 
 
 class Dweet(models.Model):
@@ -19,14 +20,32 @@ class Dweet(models.Model):
         )
 
 
+class Favourite_pages(models.Model):
+    logo =  models.ImageField(upload_to='favourite/%Y/%m/%d/',blank=True)
+    description = models.CharField(max_length=200,default='page intro')
+    url_link = models.CharField(max_length=2000,default='page link')
+
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     follows = models.ManyToManyField(
         "self", related_name="followed_by", symmetrical=False, blank=True
     )
+    date_of_birth = models.DateField(blank=True, null=True)
+    photo = models.ImageField(upload_to='users/%Y/%m/%d/',blank=True)
+    dashboard_pic = models.ImageField(upload_to='dashboard/%Y/%m/%d/',blank=True)
+    profile_intro = models.CharField(max_length=1000,default='my profile intro')
+    fav_page = models.ForeignKey(Favourite_pages, related_name='favouritePage', on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return self.user.username
+
+    @property
+    def get_photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):
+            return self.photo.url
+        else:
+            return "/static/images/user.jpg"
 
 
 @receiver(post_save, sender=User)

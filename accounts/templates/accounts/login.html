@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="form_wrap">
+        <div class="form_header">
+            <div class="main_h5">
+                <h5>Log-in</h5>
+            </div>
+            <h6>Please, use the following form to log-in:</h6>
+        </div>
+        <form class="form_wrap" action="." method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form }}
+            </div>
+            <div class="log_in_btn_wrap">
+                <button>LOG IN</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

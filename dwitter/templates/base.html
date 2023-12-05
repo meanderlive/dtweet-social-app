@@ -1,34 +1,114 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include the Bulma CSS framework for styling -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">  
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>  
+
     <title>Dwitter</title>
 </head>
+<style>
+     .hero.is-small .hero-body {
+        text-align: center;
+        position: relative;
+    }
+    .hero.is-success .title {
+    color: #fff;
+    text-align: left;
+}
+    .hero-body ul.menu {
+    display: flex;
+    margin: 20px 0;
+}
+.hero-body ul.menu li {
+    margin-right: 15px;
+    font-size: 20px;
+}
+.hero-body ul.menu li a:hover {
+    border-bottom: 1px solid #fff;
+}
+span.user {
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+span.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    margin: auto;
+}
+</style>
 <body>
     <a href="{% url 'dwitter:dashboard' %} ">
-    <section class="hero is-small is-success mb-4">    
-        <div class="hero-body">
-            <h1 class="title is-1">Dwitter</h1>
-            <p class="subtitle is-4">
-                Your tiny social network built with Django
-            </p>
-        </div>
-    </section>
+        <section class="hero is-small is-success mb-4">
+            <div class="hero-body">
+                <h1 class="title is-1">Dwitter</h1>
+                {% if request.user.is_authenticated %}
+                <ul class="menu">
+                    <li {% if section == "dashboard" %} class="selected" {% endif %}>
+                        <a href="{% url 'dashboard1' %}">My dashboard</a>
+                    </li>
+                    <li {% if section == "images" %} class="selected" {% endif %}>
+                        <a href="#">Images</a>
+                    </li>
+                    <li {% if section == "people" %} class="selected" {% endif %}>
+                        <a href="#">People</a>
+                    </li>
+                </ul>
+                {% endif %}
+                <span class="user">
+                    {% if request.user.is_authenticated %}
+                    {% if  request.user.profile.photo %}
+                    <img src="{{ request.user.profile.photo.url }}" width="120"/>
+                    {% endif %}
+                   <p> Hello {{ request.user.username }},</p>
+                   {% if request.user.is_superuser %}
+                    <a href="{% url 'logout1' %}">Logout</a>
+                    
+                    {% else %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+                    {% else %}
+                    <a href="{% url 'login' %}">Log-in</a>
+                    {% endif %}
+                </span>
+            </div>
+
+            </div>
+        </section>
     </a>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     <div class="container">
-    <div class="columns">
+        <div class="columns">
 
-        {% block content %}
-        
-        {% endblock content %}
+            {% block content %}
 
+            {% endblock content %}
+
+        </div>
     </div>
-    </div>
+
+    <script src="../../static/js/jquery.min.js"></script>
 </body>
+
 </html>

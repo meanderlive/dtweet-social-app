@@ -1,0 +1,23 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: mandeep123@gmail.com
+Date: Tue, 05 Dec 2023 10:19:49 -0000
+Message-ID: <170177158948.14840.11614437910014166752@DESKTOP-TR6SU3G>
+
+
+
+  To initiate the password reset process for your mandeep123@gmail.com Django Registration/Login App Account,
+  click the link below:
+
+  http://127.0.0.1:8000/account/reset/OA/bypqh1-c7f275126cfae66591eda6809a3156ac/
+
+  If clicking the link above doesn't work, please copy and paste the URL in a new browser
+  window instead.
+
+  Sincerely,
+  The Developer
+
+-------------------------------------------------------------------------------

@@ -1,7 +1,72 @@
+
 {% extends 'base.html' %}
-
+{% load bootstrap5 %} 
 {% block content %}
+<style>
+    /* .hero.is-small .hero-body {
+        text-align: center;
+        position: relative;
+    }
+    .hero.is-success .title {
+    color: #fff;
+    text-align: left;
+}
+    .hero-body ul.menu {
+    display: flex;
+    margin: 20px 0;
+}
+.hero-body ul.menu li {
+    margin-right: 15px;
+    font-size: 20px;
+}
+.hero-body ul.menu li a:hover {
+    border-bottom: 1px solid #fff;
+}
+span.user {
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+span.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    margin: auto;
+} */
+.column.is-one-third .content ul li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.column.is-one-third .content ul {
+    margin: 0;
+}
+.media-left img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+}
+.media-left img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+}
+.media-left figure {
+    margin: 0;
+    height: 60px !important;
+    width: 60px !important;
+}
+.content figure:not(:last-child) {
+    margin-bottom: 0;
+}
+.media-left a {
+    font-size: 20px;
+    color: #494949;
+}
 
+</style>
 <div class="column">
 
     <div class="block">
@@ -26,6 +91,9 @@
         </div>
     </form>
     </div>
+
+    
+
 
     <div class="content">
         {% for dweet in profile.user.dweets.all %}
@@ -52,12 +120,21 @@
 
     <div class="block">
         <h3 class="title is-4">
+           
             {{profile.user.username}} follows:
         </h3>
         <div class="content">
             <ul>
             {% for following in profile.follows.all %}
+            
                 <li>
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            {% if following.photo %}
+                          <img src="{{ following.photo.url }}"/>
+                          {% endif %}
+                        </figure>
+                      </div>
                     <a href="{% url 'dwitter:profile' following.id %}">
                         {{ following }}
                     </a>
@@ -75,7 +152,14 @@
             <ul>
             {% for follower in profile.followed_by.all %}
                 <li>
-                    <a href="{% url 'dwitter:profile' follower.id %}">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            {% if follower.photo %}
+                          <img src="{{ follower.photo.url }}"/>
+                          {% endif %}
+                        </figure>
+                      </div>
+                      <a href="{% url 'dwitter:profile' follower.id %}">
                         {{ follower }}
                     </a>
                 </li>
