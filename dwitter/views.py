@@ -47,3 +47,6 @@ def profile(request, pk):
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
     return render(request, "dwitter/profile.html", {"profile": profile})
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)

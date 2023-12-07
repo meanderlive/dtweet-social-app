@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-c#rcdihbl9ok5x&a=^p(=z_%%q6jd8280vch3wi&s64sry#(_a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','127.0.0.1']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
      'accounts.apps.AccountsConfig',#this is insane that accounts app come first than admin for logout custom page rather than django admin logout page
      'django.contrib.admin',
       "bootstrap5",
+     
     
 ]
 
@@ -53,8 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
+    
+] 
 ROOT_URLCONF = 'social.urls'
 
 TEMPLATES = [
