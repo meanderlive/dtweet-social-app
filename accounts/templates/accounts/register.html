@@ -1,13 +1,230 @@
-{% extends "base.html" %}
-
-{% block title %}Create an account{% endblock %}
-
+{% load static %}
 {% block content %}
-    <h1>Create an account</h1>
-    <p>Please, sign up using the following form:</p>
-    <form action="." method="post">
-        {{ user_form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" value="Create my account"></p>
-    </form>
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Crafto - The Multipurpose HTML5 Template</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="ThemeZaa">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description"
+        content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 48+ ready demos.">
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">
+    <!-- google fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- style sheets and font icons  -->
+    <link rel="stylesheet" href="{% static 'css/vendors.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/icon.min.css' %}" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+    <link rel="stylesheet" href="{% static 'demos/web-agency/web-agency.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+
+</head>
+
+<body data-mobile-nav-style="classic" class="background-position-center-top" style="background-image: url(" {%
+    static 'images/vertical-line-bg-small-medium-gray.svg' %}")>
+    <!-- start header -->
+    <header>
+        <!-- start navigation -->
+        <nav class="navbar navbar-expand-lg header-light header-transparent bg-transparent disable-fixed">
+            <div class="container-fluid">
+                <div class="col-auto col-lg-2 me-lg-0 me-auto">
+                    <a class="navbar-brand" href="demo-web-agency.html">
+                        <img src="{% static 'images/demo-web-agency-logo-black.png' %}"
+                            data-at2x="{% static 'images/demo-web-agency-logo-black@2x.png' %}" alt=""
+                            class="default-logo">
+                        <img src="{% static 'images/demo-web-agency-logo-black.png' %}"
+                            data-at2x="{% static 'images/demo-web-agency-logo-black@2x.png' %}" alt="" class="alt-logo">
+                        <img src="{% static 'images/demo-web-agency-logo-black.png' %}"
+                            data-at2x="{%static 'images/demo-web-agency-logo-black@2x.png' %}" alt=""
+                            class="mobile-logo">
+                    </a>
+                </div>
+                <div class="col-auto col-lg-8 menu-order position-static">
+                    <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                        <span class="navbar-toggler-line"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">Community</a></li>
+                            <li class="nav-item dropdown dropdown-with-icon">
+                                <a href="{% url 'expertise' %}" class="nav-link">Blog</a>
+                                <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li>
+                                        <a href="{% url 'details' %}">
+                                            <img src="https://via.placeholder.com/130x130" class="w-40px" alt="" />
+                                            <div class="submenu-icon-content">
+                                                <span>Pages</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="demo-web-agency-services-details.html">
+                                            <img src="https://via.placeholder.com/130x130" class="w-40px" alt="" />
+                                            <div class="submenu-icon-content">
+                                                <span>Event</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="demo-web-agency-services-details.html">
+                                            <img src="https://via.placeholder.com/130x130" class="w-40px" alt="" />
+                                            <div class="submenu-icon-content">
+                                                <span>eCommerce solution</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="demo-web-agency-services-details.html">
+                                            <img src="https://via.placeholder.com/130x130" class="w-40px" alt="" />
+                                            <div class="submenu-icon-content">
+                                                <span>Content writing</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li class="nav-item"><a href="demo-web-agency-projects.html" class="nav-link">Projects</a></li> -->
+                            <li class="nav-item"><a href="{% url 'people' %}" class="nav-link">People</a></li>
+                            <li class="nav-item"><a href="{% url 'projects' %}" class="nav-link">Memebership</a>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- end navigation -->
+    </header>
+    <!-- end header -->
+    <!-- start banner -->
+    <section
+        class="p-0 border-radius-6px full-screen md-h-600px sm-h-450px ipad-top-space-margin position-relative overflow-hidden">
+        <div id="particles-style-01" class="position-absolute h-100 top-0 left-0 w-100" data-particle="true"
+            data-particle-options='{"particles":{"number":{"value":10,"density":{"enable":true,"value_area":800}},"color":{"value":["#000000", "#BEFF01"]},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":4,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true}'>
+        </div>
+        <div class="looping-wrapper md-h-100"></div>
+        <div class="text-base-color absolute-middle-center banner-title fw-600 d-none d-md-inline-block"
+            data-anime='{ "el": "lines", "translateX": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            StarApp</div>
+        <div class="container  h-100 position-relative">
+            <div class="row align-items-center justify-content-center h-100">
+                <div class="col-12 text-center">
+                    <div class="containers text-center col-4 text-center login-form-container" id="container">
+
+                        <!--===========Login Form -->
+                        <div class="form-container sign-in" style="width:100%;  padding: 20px 0 20px 0 ;">
+                            <form action="{% url 'register' %}" method="post">
+                                <h6 style="text-align: center;">Register Here</h6>
+                                {% csrf_token %}
+                                <input type="text" name="username" placeholder="Username"
+                                    value="{{ user_form.username.value|default_if_none:'' }}" />
+                                <input type="text" name="first_name" placeholder="First Name"
+                                    value="{{ user_form.first_name.value|default_if_none:'' }}" />
+                                <input type="email" name="email" placeholder="Email"
+                                    value="{{ user_form.email.value|default_if_none:'' }}" />
+                                <input type="password" name="password" placeholder="Password" />
+                                <input type="password" name="password2" placeholder="Repeat Password" />
+                                <button type="submit" style="background-color: #a1f03a;">Sign Up</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end banner -->
+    <!-- start section -->
+    <section class="p-0">
+        <div class="container">
+            <div class="row justify-content-center align-items-center flex-column flex-sm-row"
+                data-anime='{ "el": "childs", "translateX": [15, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <!-- start features box item -->
+                <div class="col-auto icon-with-text-style-08 md-mb-10px text-center text-md-start">
+                    <div class="feature-box feature-box-left-icon-middle d-inline-flex align-middle">
+                        <div class="feature-box-icon me-5px">
+                            <i class="bi bi-patch-check-fill fs-15 text-dark-gray"></i>
+                        </div>
+                        <div class="feature-box-content">
+                            <span class="fs-14 fw-600 text-dark-gray text-uppercase">Empowering Connections</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features box item -->
+                <div class="col-auto md-mb-15px d-none d-md-flex">
+                    <span
+                        class="progress-step-separator bg-dark-gray w-100px lg-w-70px separator-line-1px d-block mx-auto"></span>
+                </div>
+                <!-- start features box item -->
+                <div class="col-auto icon-with-text-style-08 md-mb-10px text-center text-md-start">
+                    <div class="feature-box feature-box-left-icon-middle d-inline-flex align-middle">
+                        <div class="feature-box-icon me-5px">
+                            <i class="bi bi-geo-alt-fill fs-15 text-dark-gray"></i>
+                        </div>
+                        <div class="feature-box-content">
+                            <span class="fs-14 fw-600 text-dark-gray text-uppercase">Together We Thrive</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features box item -->
+                <div class="col-auto md-mb-15px d-none d-md-flex">
+                    <span
+                        class="progress-step-separator bg-dark-gray w-100px lg-w-70px separator-line-1px d-block mx-auto"></span>
+                </div>
+                <!-- start features box item -->
+                <div class="col-auto icon-with-text-style-08 text-center text-md-start">
+                    <div class="feature-box feature-box-left-icon-middle d-inline-flex align-middle">
+                        <div class="feature-box-icon me-5px">
+                            <i class="bi bi-heart-fill fs-15 text-dark-gray"></i>
+                        </div>
+                        <div class="feature-box-content">
+                            <span class="fs-14 fw-600 text-dark-gray text-uppercase">Your Voice, Your Community</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end features box item -->
+            </div>
+        </div>
+    </section>
+    <script>
+        "use strict";
+
+        const containerEl = document.getElementById("containers");
+        const registerBtn = document.getElementById("register");
+        const loginBtn = document.getElementById("login");
+
+        registerBtn.addEventListener("click", () =>
+            containerEl.classList.add("active"),
+        );
+
+        loginBtn.addEventListener("click", () =>
+            containerEl.classList.remove("active"),
+        );
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
 {% endblock %}

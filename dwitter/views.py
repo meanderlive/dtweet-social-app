@@ -29,7 +29,7 @@ def dashboard(request):
 
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
-    return render(request, "dwitter/profile_list.html", {"profiles": profiles})
+    return render(request, "webagency/demo-web-agency-people.html", {"profiles": profiles})
 
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
@@ -46,7 +46,7 @@ def profile(request, pk):
         elif action == "unfollow":
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
-    return render(request, "dwitter/profile.html", {"profile": profile})
+    return render(request, "dwitter/profile_list.html", {"profile": profile})
 
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
