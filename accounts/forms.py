@@ -4,7 +4,7 @@ from dwitter.models import Profile
 
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name', 'style': 'width: 100%;' 'border: none;' 'margin-bottom: 20px;' 'padding: 10px;' 'height: 50px;', 'class': 'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Name', 'style': 'width: 100%;' 'border: none;' 'margin-bottom: 20px;' 'padding: 10px;' 'height: 50px;', 'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs = {'placeholder': 'Name', 'style': 'width: 100%;' 'border: none;' 'margin-bottom: 20px;' 'padding: 10px;' 'height: 50px;', 'class': 'form-control'}))
 
 
 
