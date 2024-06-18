@@ -31,11 +31,8 @@
   min-height: 480px;
   overflow: hidden;
   position: absolute;
-<<<<<<< HEAD
   left: 0;
-=======
   right: 0;
->>>>>>> 3a01e3f6b8d8f2a2293bbd216d2aa42372a6a87f
   top: 100px;
 }
 
@@ -103,10 +100,7 @@
   position: absolute;
   top: 0;
   height: 100%;
-<<<<<<< HEAD
   left: 0;
-=======
->>>>>>> 3a01e3f6b8d8f2a2293bbd216d2aa42372a6a87f
   transition: all 0.6s ease-in-out;
 }
 
