@@ -9,7 +9,7 @@ class DweetForm(forms.ModelForm):
          widget=forms.widgets.Textarea(
             attrs={
                 "placeholder": "Dweet something...",
-                "class": "textarea is-success is-medium",
+                "class":  "textarea is-success is-medium",
             }
         ),
         label="",)

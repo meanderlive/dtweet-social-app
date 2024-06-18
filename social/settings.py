@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     "dwitter",
-     'accounts.apps.AccountsConfig',#this is insane that accounts app come first than admin for logout custom page rather than django admin logout page
-     'django.contrib.admin',
-      "bootstrap5",
+    "dwitter",
+    'accounts.apps.AccountsConfig',#this is insane that accounts app come first than admin for logout custom page rather than django admin logout page
+    'django.contrib.admin',
+    "bootstrap5",
      
     
 ]

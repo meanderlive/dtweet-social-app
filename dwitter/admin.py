@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib.auth.models import User,Group
-from .models import Dweet, Profile ,Favourite_pages
+from .models import Dweet, Profile , Favourite_pages
 # class UserAdmin(admin.ModelAdmin):
 #     model = User
 #     # Only display the "username" field

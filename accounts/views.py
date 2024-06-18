@@ -29,7 +29,7 @@ def user_login(request):
             else:
                  return HttpResponse('Invalid login')
     else:
-        form = LoginForm()
+        form =  LoginForm()
     return render(request, 'accounts/login.html', {'form': form})
 
 

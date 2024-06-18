@@ -14,7 +14,7 @@ def dashboard(request):
         form = DweetForm(request.POST)
         if form.is_valid():
             dweet = form.save(commit=False)
-            dweet.user = request.user
+            dweet.user =  request.user
             dweet.save()
             return redirect("dwitter:dashboard")
     followed_dweets = Dweet.objects.filter(
