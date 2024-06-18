@@ -27,7 +27,15 @@
     <link rel="stylesheet" href="{% static 'demos/web-agency/web-agency.css' %}" />
     <link rel="stylesheet" href="{% static 'css/form.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-
+    <style>
+        .login-link{
+            font-size: 15px !important;
+        }
+        .login-link:hover{
+            color: #a1f03a;
+            transition: 0.3s;
+        }
+     </style>
 
 </head>
 
@@ -144,6 +152,7 @@
                                 <input type="password" name="password" placeholder="Password" />
                                 <input type="password" name="password2" placeholder="Repeat Password" />
                                 <button type="submit" style="background-color: #a1f03a;">Sign Up</button>
+                                <a class="login-link" href="{% url 'login' %}" >Log-in</a>
                             </form>
 
                         </div>
