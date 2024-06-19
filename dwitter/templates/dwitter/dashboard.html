@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="column">
+<div class = "column">
     {% for dweet in dweets %}
         <div class="box">
             {{dweet.body}} 
@@ -13,7 +13,7 @@
     {% endfor %}
 </div>
 
-<div class="column is-one-third">
+<div class ="column is-one-third">
 
     <div class="block">
         <a href="{% url 'dwitter:profile_list' %} ">

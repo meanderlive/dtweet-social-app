@@ -17,13 +17,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <!-- style sheets and font icons  -->
-        <link rel="stylesheet" href="{% static 'vendors.min.css' %}css/"/>
+        <link rel="stylesheet" href="{% static 'css/vendors.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/icon.min.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
         <link rel="stylesheet" href="{% static 'demos/web-agency/web-agency.css' %}" /> 
     </head>
-    <body data-mobile-nav-style="classic" class="background-position-center-top" style="background-image: url(images/vertical-line-bg-small-medium-gray.svg)"> 
+    <body data-mobile-nav-style="classic" class="background-position-center-top" style="background-image: url("{% static 'images/vertical-line-bg-small-medium-gray.svg' %}")> 
         <!-- start header -->
         <header> 
             <!-- start navigation -->
@@ -31,9 +31,9 @@
                 <div class="container-fluid">
                     <div class="col-auto col-lg-2 me-lg-0 me-auto">
                         <a class="navbar-brand" href="demo-web-agency.html">
-                            <img src="{% static 'images/demo-web-agency-logo-black.png' %}" data-at2x="images/demo-web-agency-logo-black@2x.png" alt="" class="default-logo">
-                            <img src="{% static 'images/demo-web-agency-logo-black.png' %}" data-at2x="images/demo-web-agency-logo-black@2x.png" alt="" class="alt-logo">
-                            <img src="{% static 'images/demo-web-agency-logo-black.png' %}" data-at2x="images/demo-web-agency-logo-black@2x.png" alt="" class="mobile-logo"> 
+                            <img src="{% static 'images/demo-web-agency-logo-black.png' %}" data-at2x="{% static 'images/demo-web-agency-logo-black@2x.png' %}" alt="" class="default-logo">
+                            <img src="{% static 'images/demo-web-agency-logo-black.png' %}" data-at2x="{% static 'images/demo-web-agency-logo-black@2x.png' %}" alt="" class="alt-logo">
+                            <img src="{% static 'images/demo-web-agency-logo-black.png' %}" data-at2x="{% static 'images/demo-web-agency-logo-black@2x.png' %}" alt="" class="mobile-logo"> 
                         </a>
                     </div>
                     <div class="col-auto col-lg-8 menu-order position-static">
@@ -161,27 +161,27 @@
                 <div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 clients-style-06 justify-content-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <!-- start client item -->
                     <div class="col client-box text-center md-mb-40px">
-                        <a href="#"><img src="images/logo-walmart-dark-gray.svg" class="h-35px" alt=""></a>
+                        <a href="#"><img src="{% static 'images/logo-walmart-dark-gray.svg' %}" class="h-35px" alt=""></a>
                     </div>
                     <!-- end client item -->
                     <!-- start client item -->
                     <div class="col client-box text-center md-mb-40px">
-                        <a href="#"><img src="images/logo-invision-dark-gray.svg" class="h-40px" alt=""></a>
+                        <a href="#"><img src="{% static 'images/logo-invision-dark-gray.svg' %}" class="h-40px" alt=""></a>
                     </div>
                     <!-- end client item -->
                     <!-- start client item -->
                     <div class="col client-box text-center md-mb-40px">
-                        <a href="#"><img src="images/logo-netflix-dark-gray.svg" class="h-35px" alt=""></a>
+                        <a href="#"><img src="{% static 'images/logo-netflix-dark-gray.svg' %}" class="h-35px" alt=""></a>
                     </div>
                     <!-- end client item -->
                     <!-- start client item -->
                     <div class="col client-box text-center sm-mb-40px">
-                        <a href="#"><img src="images/logo-logitech-dark-gray.svg" class="h-35px" alt=""></a>
+                        <a href="#"><img src="{% static 'images/logo-logitech-dark-gray.svg' %}" class="h-35px" alt=""></a>
                     </div> 
                     <!-- end client item -->
                     <!-- start client item -->
                     <div class="col client-box text-center">
-                        <a href="#"><img src="images/logo-amazon-dark-gray.svg" class="h-35px" alt=""></a>
+                        <a href="#"><img src="{% static 'images/logo-amazon-dark-gray.svg' %}" class="h-35px" alt=""></a>
                     </div> 
                     <!-- end client item -->
                 </div>
