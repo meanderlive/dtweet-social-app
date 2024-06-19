@@ -86,9 +86,9 @@
                                     </ul>
                                 </li>
                                 <!-- <li class="nav-item"><a href="demo-web-agency-projects.html" class="nav-link">Projects</a></li> -->
-                                <li class="nav-item"><a href="demo-web-agency-people.html" class="nav-link">People</a></li> 
-                                <li class="nav-item"><a href="demo-web-agency-blog.html" class="nav-link">Memebership</a></li>  
-                                <li class="nav-item"><a href="demo-web-agency-contact.html" class="nav-link">Contact</a></li>
+                                <li class="nav-item"><a href="{% url 'people' %}" class="nav-link">People</a></li> 
+                                <li class="nav-item"><a href="{% url 'creative' %}" class="nav-link">Memebership</a></li>  
+                                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -672,13 +672,13 @@
                     <div class="row align-items-center">
                         <div class="col-lg-7 text-center text-lg-start md-mb-10px"> 
                             <ul class="footer-navbar fw-600 fs-16"> 
-                                <li class="nav-item active"><a href="demo-web-agency.html" class="nav-link">Home</a></li>
-                                <li class="nav-item"><a href="demo-web-agency-about.html" class="nav-link">Agency</a></li>
-                                <li class="nav-item"><a href="demo-web-agency-expertise.html" class="nav-link">Expertise</a></li>
-                                <li class="nav-item"><a href="demo-web-agency-projects.html" class="nav-link">Projects</a></li>
-                                <li class="nav-item"><a href="demo-web-agency-people.html" class="nav-link">People</a></li> 
-                                <li class="nav-item"><a href="demo-web-agency-blog.html" class="nav-link">Blog</a></li>  
-                                <li class="nav-item"><a href="demo-web-agency-contact.html" class="nav-link">Contact</a></li>
+                                <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">Agency</a></li>
+                                <li class="nav-item"><a href="{% url 'expertise' %}" class="nav-link">Expertise</a></li>
+                                <li class="nav-item"><a href="{% url 'projects' %}" class="nav-link">Projects</a></li>
+                                <li class="nav-item"><a href="{% url 'people' %}" class="nav-link">People</a></li> 
+                                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>  
+                                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
                             </ul>
                         </div>   
                         <div class="col-lg-5 text-center text-lg-end"> 
