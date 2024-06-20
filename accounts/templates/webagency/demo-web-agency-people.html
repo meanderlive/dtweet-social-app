@@ -234,17 +234,33 @@
                 <div class="row mb-6">
                     <div class="col-lg-5 text-center text-md-start">
                         <div class="position-sticky top-100px md-top-0px md-position-relative">
-                            <div class="bg-dark-gray border-radius-100px fs-12 text-white ps-20px pe-20px d-inline-block text-uppercase fw-500 mb-5 ls-05px">Why work with us?</div>
-                            <h3 class="text-dark-gray fw-600 w-70 lg-w-80 md-w-100 ls-minus-2px">Become part of our team.</h3> 
+                            <div class="block">
+                                <div class="block">
+                                    <h2 class="title is-2">Add a Dweet</p>
+                                </div>
+                                <div class="block">
+                                    <form action="{% url 'dwitter:profile_list' %}" method="post">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <button class="button is-success is-fullwidth is-medium mt-5"
+                                                type="submit">Dweet
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-7 text-center text-md-start" data-anime='{ "el": "childs", "translateY": [-15, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
                         <div class="row">
-                            <div class="col-md-5">
-                                <div class="fs-20 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px lh-30">Build a greatest career with crafto agency.</div>
-                            </div>
-                            <div class="col-md-7 last-paragraph-no-margin">
-                                <p>We value each and every human life placed our hands constantly work towards meeting the expectations of our customers.</p>
+                            <div class = "column">
+                                {% for dweet in dweets %}
+                                    <div class="box">
+                                        {{dweet.body}} 
+                                        <span class="is-small has-text-grey-light">
+                                            ({{ dweet.created_at }} by {{ dweet.user.username }})
+                                        </span>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="separator-line-1px border-bottom border-color-dark-gray mt-35px mb-35px"></div>

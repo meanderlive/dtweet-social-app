@@ -28,8 +28,19 @@ def dashboard(request):
     )
 
 def profile_list(request):
+    form = DweetForm(request.POST or None)
+    if request.method == "POST":
+        form = DweetForm(request.POST)
+        if form.is_valid():
+            dweet = form.save(commit=False)
+            dweet.user =  request.user
+            dweet.save()
+            return redirect("dwitter:dashboard")
+    followed_dweets = Dweet.objects.filter(
+        user__profile__in=request.user.profile.follows.all()
+    ).order_by("-created_at")
     profiles = Profile.objects.exclude(user=request.user)
-    return render(request, "webagency/demo-web-agency-people.html", {"profiles": profiles})
+    return render(request, "webagency/demo-web-agency-people.html", {"profiles": profiles,"form": form,"dweets": followed_dweets})
 
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
