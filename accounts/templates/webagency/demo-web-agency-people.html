@@ -240,8 +240,8 @@
                                 </div>
                                 <div class="block">
                                     <form action="{% url 'dwitter:profile_list' %}" method="post">
-                                        {% csrf_token %}
-                                        {{ form.as_p }}
+                                          {% csrf_token %}
+                                          {{ form.as_p }}
                                         <button class="button is-success is-fullwidth is-medium mt-5"
                                                 type="submit">Dweet
                                         </button>
