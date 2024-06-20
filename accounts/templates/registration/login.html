@@ -195,12 +195,8 @@
                                         </p>
                                 {% endif %}
                                 {% csrf_token %} 
-                                <!-- {{ form.as_p }} -->
-                                <input type="hidden" name="next" value="{{ next }}" />
-                                <input type="text" name="next" placeholder="Username"
-                                value="" />
-                                <input type="password" name="next" placeholder="Password"
-                                value="" />
+                                {{ form.as_p }}
+                         
                                 <button type="submit" style="background-color: #a1f03a;">Login</button>
                             <p><a class="ForgottenPass" href="{% url 'password_reset' %}">Forgotten your password?</a></p>
                             </form>
