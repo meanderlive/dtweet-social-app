@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
         <link rel="stylesheet" href="{% static 'demos/web-agency/web-agency.css' %}" /> 
     </head>
-    <body data-mobile-nav-style="classic" class="background-position-center-top" style="background-image: url(images/vertical-line-bg-small-medium-gray.svg)"> 
+    <body data-mobile-nav-style="classic" class="background-position-center-top" style="background-image: url("{% static 'images/vertical-line-bg-small-medium-gray.svg' %}"")> 
         <!-- start header -->
         <header> 
             <!-- start navigation -->
@@ -97,9 +97,9 @@
                     <div class="col-auto col-lg-2 text-end">
                         <div class="header-icon"> 
                             <div class="header-button">
-                                <a href="demo-web-agency-about.html" class="btn btn-rounded btn-dark-gray btn-medium btn-switch-text btn-box-shadow text-transform-none">
+                                <a href="{% url 'logout1' %}" class="btn btn-rounded btn-dark-gray btn-medium btn-switch-text btn-box-shadow text-transform-none">
                                     <span>
-                                        <span class="btn-double-text" data-text="Hire agency">Hire agency</span>
+                                        <span class="btn-double-text" data-text="Hire agency">Logout</span>
                                         <span><i class="fa-solid fa-arrow-right"></i></span>
                                     </span>
                                 </a>
