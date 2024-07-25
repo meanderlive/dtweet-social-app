@@ -1,4 +1,37 @@
 {% load static %}
+
+
+
+{% block content %}
+
+<div class="column">
+
+{% for profile in profiles %}
+
+<div class="block">
+  <div class="card">
+    <a href="{% url 'dwitter:profile' profile.id %}">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" width="120"/>
+            {% endif %}
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">{{ profile.user.username }}</p>
+          <p class="subtitle is-6">@{{ profile.user.username|lower }}</p>
+        </div>
+      </div>
+    </div>
+    </a>
+  </div>
+</div>
+
+{% endfor %}
+{% load static %}
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -85,14 +118,16 @@
                                         </li>
                                     </ul>
                                 </li>
+                           
                                 <li class="nav-item"><a href="{% url 'dwitter:profile_list' %}" class="nav-link">People</a></li> 
-                                <li class="nav-item"><a href="{% url 'creative' %}" class="nav-link">Memebership</a></li>  
+                                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>  
                                 <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-auto col-lg-2 text-end">
                         <div class="header-icon"> 
+                            {% if request.user.is_authenticated %}
                             <div class="header-button">
                                 <a href="{% url 'logout1' %}" class="btn btn-rounded btn-dark-gray btn-medium btn-switch-text btn-box-shadow text-transform-none">
                                     <span>
@@ -101,7 +136,17 @@
                                     </span>
                                 </a>
                             </div>
-                        </div>  
+                            {% else %}
+                            <div class="header-button">
+                                <a href="{% url 'login' %}" class="btn btn-rounded btn-dark-gray btn-medium btn-switch-text btn-box-shadow text-transform-none">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Hire agency">Login</span>
+                                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div> 
                     </div>
                 </div>
             </nav>
@@ -134,7 +179,7 @@
                         <ul class="popular-post-sidebar position-relative" data-anime='{ "el": "childs", "translateY": [15, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
                             <li class="d-sm-flex align-items-center mb-35px">
                                 <figure>
-                                    <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/600x415" class="border-radius-4px" alt=""></a>
+                                    <a href="{% url 'creative' %}"><img src="{% static 'images/bp1.jpg' %}" class="border-radius-4px" alt=""></a>
                                 </figure>
                                 <div class="col media-body">
                                     <a href="{% url 'creative' %}" class="fw-600 fs-22 lh-30 ls-minus-05px text-dark-gray text-dark-gray-hover d-inline-block mb-15px w-85 xl-w-100">Everything is designed things are good designed.</a>
@@ -147,7 +192,7 @@
                             </li>
                             <li class="d-sm-flex align-items-center mb-35px">
                                 <figure>
-                                    <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/600x415" class="border-radius-4px" alt=""></a>
+                                    <a href="{% url 'creative' %}"><img src="{% static 'images/bp2.jpg' %}" class="border-radius-4px" alt=""></a>
                                 </figure>
                                 <div class="col media-body">
                                     <a href="{% url 'creative' %}" class="fw-600 fs-22 lh-30 ls-minus-05px text-dark-gray text-dark-gray-hover d-inline-block mb-15px w-85 xl-w-100">The golden rule finds no limit application in business.</a>
@@ -160,7 +205,7 @@
                             </li>
                             <li class="d-sm-flex align-items-center">
                                 <figure>
-                                    <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/600x415" class="border-radius-4px" alt=""></a>
+                                    <a href="{% url 'creative' %}"><img src="{% static 'images/bp3.jpg' %}" class="border-radius-4px" alt=""></a>
                                 </figure>
                                 <div class="col media-body">
                                     <a href="{% url 'creative' %}" class="fw-600 fs-22 lh-30 ls-minus-05px text-dark-gray text-dark-gray-hover d-inline-block mb-15px w-85 xl-w-100">Ambition is to be the spider in the world wide web.</a>
@@ -184,11 +229,12 @@
                     <div class="col-12 tab-style-04">
                         <!-- filter navigation -->
                         <ul class="portfolio-filter nav nav-tabs justify-content-center text-center border-0 fw-500">
-                            <li class="nav active"><a data-filter="*" href="#">All</a></li>
-                            <li class="nav"><a data-filter=".design" href="#">Design</a></li>
-                            <li class="nav"><a data-filter=".development" href="#">Development</a></li>
-                            <li class="nav"><a data-filter=".marketing" href="#">Marketing</a></li>
-                            <li class="nav"><a data-filter=".other" href="#">Other</a></li> 
+                            <li class="nav"><a data-filter="*" href="#">Top Profiles</a></li>
+                            <li class="nav"><a data-filter=".design" href="#">Most Viewed</a></li>
+                            <a data-filter=".development" href="{% url 'dwitter:profile_list' %}">My Profile</a>
+                            <!-- <li class="nav" ><a data-filter=".development" href="{% url 'people' %}">My Profile</a></li> -->
+                            <li class="nav"><a data-filter=".marketing" href="#">Follower</a></li>
+                            <li class="nav"><a data-filter=".other" href="#">Activity Feed</a></li> 
                         </ul>
                         <!-- end filter navigation --> 
                     </div>
@@ -201,7 +247,7 @@
                             <li class="grid-item design marketing other">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/bp4.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">08 August 2023</a></span>
@@ -214,7 +260,7 @@
                             <li class="grid-item development other">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/im2.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">12 August 2023</a></span>
@@ -227,7 +273,7 @@
                             <li class="grid-item design development">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/im7.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">20 August 2023</a></span>
@@ -240,7 +286,7 @@
                             <li class="grid-item development other">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/im8.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">26 August 2023</a></span>
@@ -252,7 +298,7 @@
                             <li class="grid-item design marketing">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/im5.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">08 August 2023</a></span>
@@ -265,7 +311,7 @@
                             <li class="grid-item design marketing">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/pp.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">12 August 2023</a></span>
@@ -278,7 +324,7 @@
                             <li class="grid-item development other">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/im1.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">20 August 2023</a></span>
@@ -291,7 +337,7 @@
                             <li class="grid-item marketing">
                                 <div class="card bg-transparent border-0 h-100">
                                     <div class="blog-image position-relative overflow-hidden border-radius-4px">
-                                        <a href="{% url 'creative' %}"><img src="https://via.placeholder.com/550x395" alt=""></a>
+                                        <a href="{% url 'creative' %}"><img src="{% static 'images/im9.jpg' %}" alt=""></a>
                                     </div>
                                     <div class="card-body px-0 pt-30px pb-30px xs-pb-15px">
                                         <span class="fs-14 text-uppercase d-block mb-5px fw-500"><a href="{% url 'blog' %}" class="text-dark-gray text-dark-gray-hover fw-700 categories-text">Design</a><a href="#" class="blog-date text-medium-gray-hover">26 August 2023</a></span>
@@ -396,3 +442,7 @@
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
     </body>
 </html>
+
+</div>
+
+{% endblock content %}
