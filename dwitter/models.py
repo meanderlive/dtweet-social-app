@@ -34,7 +34,7 @@ class Profile(models.Model):
     date_of_birth = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='users/%Y/%m/%d/',blank=True)
     dashboard_pic = models.ImageField(upload_to='dashboard/%Y/%m/%d/',blank=True)
-    profile_intro = models.CharField(max_length=1000,default='my profile intro')
+    profile_intro = models.CharField(max_length=1000,default='my profile intro',null=True,blank= True)
     fav_page = models.ForeignKey(Favourite_pages, related_name='favouritePage', on_delete=models.CASCADE,null=True)
 
     def __str__(self):

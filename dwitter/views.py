@@ -36,6 +36,7 @@ def profile_list(request):
             dweet.user =  request.user
             dweet.save()
             return redirect("dwitter:profile_list")
+        
     followed_dweets = Dweet.objects.filter(
         user__profile__in=request.user.profile.follows.all()
     ).order_by("-created_at")
