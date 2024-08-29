@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bootstrap-4.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/static/bootstrap-4.0.0.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
